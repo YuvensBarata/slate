@@ -18,14 +18,28 @@ search: true
 
 # Introduction 
 
-USER REST API 
+Retention & Referral List of API
 
-**Version:** 0.0.1 
+Here you can find the list of API which is used by the Retention & Referral Team.
+This list will always be updated if there're any changes.
 
 # /AUTH/LOGIN
 ## ***POST*** 
 
-**Summary:** login
+**Summary:** API for login
+
+```shell
+
+curl  -X POST "http://jokul-retention-dev.103.10.130.53.xip.io/retention/
+               user/v1/auth/login"
+      -H "accept: application/json"
+      -H "Content-Type: application/json"
+      -d "{ "captcha": \"string\",
+            "email": \"string\",
+            "password": \"string\"
+         }"
+
+```
 
 ### HTTP Request 
 `***POST*** /auth/login` 
@@ -49,10 +63,23 @@ USER REST API
 # /BUSINESS/SERVICE/CHANGE
 ## ***POST*** 
 
-**Summary:** changeBusinessService
+**Summary:** API to change business
+
+
+``` shell
+
+curl  -X POST "http://jokul-retention-dev.103.10.130.53.xip.io/retention/
+               user/v1/business/service/change"
+      -H "accept: */*"
+      -H "Content-Type: application/json"
+      -d "{ "business_client_id": \"string\",
+            "business_service_client_id": \"string\"
+         }"
+
+```
 
 ### HTTP Request 
-`***POST*** /business/service/change` 
+`***POST*** /business/service/change`
 
 **Parameters**
 
@@ -73,10 +100,20 @@ USER REST API
 # /BUSINESS/SERVICE/USER
 ## ***POST*** 
 
-**Summary:** getBusinessServiceListByUser
+**Summary:** API to get List of business service
+
+``` shell
+
+curl  -X POST "http://jokul-retention-dev.103.10.130.53.xip.io/retention/
+               user/v1/business/service/user"
+      -H "accept: */*"
+      -H "Content-Type: application/json"
+      -d "{ "business_client_id": \"string\"}"
+
+```
 
 ### HTTP Request 
-`***POST*** /business/service/user` 
+`***POST*** /business/service/user`
 
 **Parameters**
 
@@ -97,7 +134,20 @@ USER REST API
 # /CLIENT
 ## ***POST*** 
 
-**Summary:** createUserClient
+**Summary:** API to create relation between user and business service client
+
+``` shell
+
+curl  -X POST "http://jokul-retention-dev.103.10.130.53.xip.io/retention/
+               user/v1/client"
+      -H "accept: */*"
+      -H "Content-Type: application/json"
+      -d "{ "business_service_client_id": \"string\",
+            "status": \"string\",
+            "user_id": \integer\
+         }"
+
+```
 
 ### HTTP Request 
 `***POST*** /client` 
@@ -121,7 +171,21 @@ USER REST API
 # /CLIENT/ROLE
 ## ***POST*** 
 
-**Summary:** createUserClient
+**Summary:** API to create relation between user and the role in the business
+
+``` shell
+
+curl  -X POST "http://jokul-retention-dev.103.10.130.53.xip.io/retention/
+               user/v1/client/role"
+      -H "accept: */*"
+      -H "Content-Type: application/json"
+      -d "{ "business_service_client_id": \"string\",
+            "role_id": \integer\,
+            "status": \"string\",
+            "user_id": \integer\
+         }"
+
+```
 
 ### HTTP Request 
 `***POST*** /client/role` 
@@ -145,7 +209,19 @@ USER REST API
 # /EMAIL
 ## ***POST*** 
 
-**Summary:** mail
+**Summary:** API for sending email
+
+``` shell
+
+curl  -X POST "http://jokul-retention-dev.103.10.130.53.xip.io/retention/
+               user/v1/email"
+      -H "accept: */*"
+      -H "Content-Type: application/json"
+      -d "{ "captcha": \"string\",
+            "email": \"string\"
+         }"
+
+```
 
 ### HTTP Request 
 `***POST*** /email` 
@@ -169,7 +245,19 @@ USER REST API
 # /INVITATION
 ## ***POST*** 
 
-**Summary:** inviteMember
+**Summary:** API to send email to the invitee
+
+``` shell
+
+curl  -X POST "http://jokul-retention-dev.103.10.130.53.xip.io/retention/
+               user/v1/invitation"
+      -H "accept: */*"
+      -H "Content-Type: application/json"
+      -d "{ "role_id": \integer\,
+            "user_email": \"string\"
+         }"
+
+```
 
 ### HTTP Request 
 `***POST*** /invitation` 
@@ -193,7 +281,19 @@ USER REST API
 # /INVITEE-CONFIRMATION
 ## ***POST*** 
 
-**Summary:** inviteeConfirmation
+**Summary:** API to confirm an invitee which is invited to a business
+
+``` shell
+
+curl  -X POST "http://jokul-retention-dev.103.10.130.53.xip.io/retention/
+               user/v1/invitee-confirmation"
+      -H "accept: */*"
+      -H "Content-Type: application/json"
+      -d "{ "token": \"string\",
+            "user_id": \integer\
+         }"
+
+```
 
 ### HTTP Request 
 `***POST*** /invitee-confirmation` 
@@ -217,10 +317,27 @@ USER REST API
 # /INVITEE-REGISTRATION
 ## ***POST*** 
 
-**Summary:** inviteeRegistration
+**Summary:** API for invitee registration
+
+``` shell
+
+curl  -X POST "http://jokul-retention-dev.103.10.130.53.xip.io/retention/
+               user/v1/invitee-registration"
+      -H "accept: */*"
+      -H "Content-Type: application/json"
+      -d "{ "agreement": boolean, 
+            "fullname": \"string\", 
+            "password": \"string\",
+            "phone_calling_code": \"string\",
+            "phone_number": \"string\", 
+            "token": \"string\", 
+            "user_id": \integer\
+         }"
+
+```
 
 ### HTTP Request 
-`***POST*** /invitee-registration` 
+`***POST*** /invitee-registration`
 
 **Parameters**
 
@@ -241,7 +358,21 @@ USER REST API
 # /KAFKA/BUSINESS
 ## ***POST*** 
 
-**Summary:** createBusinessKafka
+**Summary:** API to create business after listening the data from kafka 
+
+``` shell
+
+curl  -X POST "http://jokul-retention-dev.103.10.130.53.xip.io/retention/
+               user/v1/kafka/business"
+      -H "accept: */*"
+      -H "Content-Type: application/json"
+      -d "{ "businessClientId": \"string\",
+            "businessServiceClientId": \"string\",
+            "createdBy": \"string\",
+            "name": \"string\"
+         }"
+
+```
 
 ### HTTP Request 
 `***POST*** /kafka/business` 
@@ -265,7 +396,21 @@ USER REST API
 # /KAFKA/BUSINESS/SERVICE
 ## ***POST*** 
 
-**Summary:** createBusinessServiceKafka
+**Summary:** API to create business service from a business after listening the data from kafka
+
+``` shell
+
+curl  -X POST "http://jokul-retention-dev.103.10.130.53.xip.io/retention/
+               user/v1/kafka/business/service"
+      -H "accept: */*"
+      -H "Content-Type: application/json"
+      -d "{ "businessClientId": \"string\",
+            "businessServiceClientId": \"string\",
+            "createdBy": \"string\", 
+            "name": \"string\"
+         }"
+
+```
 
 ### HTTP Request 
 `***POST*** /kafka/business/service` 
@@ -289,7 +434,17 @@ USER REST API
 # /MENU/CHANGE
 ## ***POST*** 
 
-**Summary:** changeMenu
+**Summary:** API to get data after choosing a specific menu
+
+``` shell
+
+curl  -X POST "http://jokul-retention-dev.103.10.130.53.xip.io/retention/
+               user/v1/menu/change"
+      -H "accept: */*"
+      -H "Content-Type: application/json"
+      -d "{ "menu_id": \integer\}"
+
+```
 
 ### HTTP Request 
 `***POST*** /menu/change` 
@@ -313,7 +468,20 @@ USER REST API
 # /PASSWORD
 ## ***POST*** 
 
-**Summary:** password
+**Summary:** API to create password
+
+``` shell
+
+curl  -X POST "http://jokul-retention-dev.103.10.130.53.xip.io/retention/
+               user/v1/password"
+      -H "accept: */*"
+      -H "Content-Type: application/json"
+      -d "{ "password": \"string\", 
+            "token": \"string\",
+            "user_id": \integer\
+         }"
+
+```
 
 ### HTTP Request 
 `***POST*** /password` 
@@ -337,7 +505,19 @@ USER REST API
 # /PASSWORD/VERIFY
 ## ***POST*** 
 
-**Summary:** passwordVerify
+**Summary:** API for verifying the token to check whether the token is still valid
+
+``` shell
+
+curl  -X POST "http://jokul-retention-dev.103.10.130.53.xip.io/retention/
+               user/v1/password/verify"
+      -H "accept: */*"
+      -H "Content-Type: application/json"
+      -d "{ "token": \"string\",
+            "user_id": \integer\
+         }"
+
+```
 
 ### HTTP Request 
 `***POST*** /password/verify` 
@@ -361,7 +541,25 @@ USER REST API
 # /REGISTRATION
 ## ***POST*** 
 
-**Summary:** register
+**Summary:** API for user registration
+
+``` shell
+
+curl  -X POST "http://jokul-retention-dev.103.10.130.53.xip.io/retention/
+               user/v1/registration"
+      -H "accept: */*"
+      -H "Content-Type: application/json"
+      -d "{ "agreement": \boolean\,
+            "captcha": \"string\",
+            "email": \"string\",
+            "name": \"string\",
+            "phone": \"string\",
+            "phone_calling_id": \"string\",
+            "referral_id": \"string\",
+            "user_type": \"string\"
+         }"
+
+```
 
 ### HTTP Request 
 `***POST*** /registration` 
@@ -385,7 +583,19 @@ USER REST API
 # /ROLE
 ## ***POST*** 
 
-**Summary:** createRole
+**Summary:** API for creating role
+
+``` shell
+
+curl  -X POST "http://jokul-retention-dev.103.10.130.53.xip.io/retention/
+               user/v1/role"
+      -H "accept: */*"
+      -H "Content-Type: application/json"
+      -d "{ "role_name": \"string\",
+            "type": \"string\"
+         }"
+
+```
 
 ### HTTP Request 
 `***POST*** /role` 
@@ -409,7 +619,20 @@ USER REST API
 # /ROLES
 ## ***POST*** 
 
-**Summary:** getAllRolesAndId
+**Summary:** API to get list of roles
+
+``` shell
+
+curl  -X POST "http://jokul-retention-dev.103.10.130.53.xip.io/retention/
+               user/v1/roles"
+      -H "accept: */*"
+      -H "Content-Type: application/json"
+      -d "{ "id": \integer\,
+            "role_name": \"string\",
+            "type": \"string\"
+         }"
+
+```
 
 ### HTTP Request 
 `***POST*** /roles` 
@@ -433,7 +656,20 @@ USER REST API
 # /USERCONFIG
 ## ***POST*** 
 
-**Summary:** createUserConfig
+**Summary:** API to create additional user configuration
+
+``` shell
+
+curl  -X POST "http://jokul-retention-dev.103.10.130.53.xip.io/retention/
+               user/v1/userconfig"
+      -H "accept: */*"
+      -H "Content-Type: application/json"
+      -d "{ "key": \"string\",
+            "user_id": 0, 
+            "value": \"string\"
+         }"
+
+```
 
 ### HTTP Request 
 `***POST*** /userconfig` 
