@@ -69,7 +69,7 @@ curl  -X POST "http://jokul-retention-dev.103.10.130.53.xip.io/retention/
 ``` shell
 
 curl  -X POST "http://jokul-retention-dev.103.10.130.53.xip.io/retention/
-               user/v1/business/service/change"
+               user/v1/business-service/change"
       -H "accept: */*"
       -H "Content-Type: application/json"
       -d "{ "business_client_id": \"string\",
@@ -79,7 +79,7 @@ curl  -X POST "http://jokul-retention-dev.103.10.130.53.xip.io/retention/
 ```
 
 ### HTTP Request 
-`***POST*** /business/service/change`
+`***POST*** /business-service/change`
 
 **Parameters**
 
@@ -97,7 +97,7 @@ curl  -X POST "http://jokul-retention-dev.103.10.130.53.xip.io/retention/
 | 403 | Forbidden |
 | 404 | Not Found |
 
-# /BUSINESS/SERVICE/USER
+# /BUSINESS-SERVICE/LIST
 ## ***POST*** 
 
 **Summary:** API to get List of business service
@@ -105,7 +105,7 @@ curl  -X POST "http://jokul-retention-dev.103.10.130.53.xip.io/retention/
 ``` shell
 
 curl  -X POST "http://jokul-retention-dev.103.10.130.53.xip.io/retention/
-               user/v1/business/service/user"
+               user/v1/business-service/list"
       -H "accept: */*"
       -H "Content-Type: application/json"
       -d "{ "business_client_id": \"string\"}"
@@ -113,7 +113,7 @@ curl  -X POST "http://jokul-retention-dev.103.10.130.53.xip.io/retention/
 ```
 
 ### HTTP Request 
-`***POST*** /business/service/user`
+`***POST*** /business-service/list`
 
 **Parameters**
 
@@ -502,42 +502,6 @@ curl  -X POST "http://jokul-retention-dev.103.10.130.53.xip.io/retention/
 | 403 | Forbidden |
 | 404 | Not Found |
 
-# /PASSWORD/VERIFY
-## ***POST*** 
-
-**Summary:** API for verifying the token to check whether the token is still valid
-
-``` shell
-
-curl  -X POST "http://jokul-retention-dev.103.10.130.53.xip.io/retention/
-               user/v1/password/verify"
-      -H "accept: */*"
-      -H "Content-Type: application/json"
-      -d "{ "token": \"string\",
-            "user_id": \integer\
-         }"
-
-```
-
-### HTTP Request 
-`***POST*** /password/verify` 
-
-**Parameters**
-
-| Name | Located in | Description | Required | Type |
-| ---- | ---------- | ----------- | -------- | ---- |
-| passwordVerifyRequest | body | passwordVerifyRequest | Yes |  |
-
-**Responses**
-
-| Code | Description |
-| ---- | ----------- |
-| 200 | OK |
-| 201 | Created |
-| 401 | Unauthorized |
-| 403 | Forbidden |
-| 404 | Not Found |
-
 # /REGISTRATION
 ## ***POST*** 
 
@@ -653,7 +617,76 @@ curl  -X POST "http://jokul-retention-dev.103.10.130.53.xip.io/retention/
 | 403 | Forbidden |
 | 404 | Not Found |
 
-# /USERCONFIG
+# /TEAM-MEMBER-LIST
+## ***POST*** 
+
+**Summary:** API to get team member list with pagination
+
+``` shell
+
+curl  -X POST "http://jokul-retention-dev.103.10.130.53.xip.io/retention/user/v1/team-member-list"
+      -H "accept: */*"
+      -H "Content-Type: application/json"
+      -d "{ "pages": 0}"
+
+```
+
+### HTTP Request 
+`***POST*** /team-member-list` 
+
+**Parameters**
+
+| Name | Located in | Description | Required | Type |
+| ---- | ---------- | ----------- | -------- | ---- |
+| pages | body | pages | Yes |  |
+
+**Responses**
+
+| Code | Description |
+| ---- | ----------- |
+| 200 | OK |
+| 201 | Created |
+| 401 | Unauthorized |
+| 403 | Forbidden |
+| 404 | Not Found |
+
+# /TOKEN-VERIFICATION
+## ***POST*** 
+
+**Summary:** API for verifying the token to check whether the token is still valid
+
+``` shell
+
+curl  -X POST "http://jokul-retention-dev.103.10.130.53.xip.io/retention/
+               user/v1/token-verification"
+      -H "accept: */*"
+      -H "Content-Type: application/json"
+      -d "{ "token": \"string\",
+            "user_id": \integer\
+         }"
+
+```
+
+### HTTP Request 
+`***POST*** /token-verification` 
+
+**Parameters**
+
+| Name | Located in | Description | Required | Type |
+| ---- | ---------- | ----------- | -------- | ---- |
+| passwordVerifyRequest | body | passwordVerifyRequest | Yes |  |
+
+**Responses**
+
+| Code | Description |
+| ---- | ----------- |
+| 200 | OK |
+| 201 | Created |
+| 401 | Unauthorized |
+| 403 | Forbidden |
+| 404 | Not Found |
+
+# /USER-CONFIG
 ## ***POST*** 
 
 **Summary:** API to create additional user configuration
@@ -661,7 +694,7 @@ curl  -X POST "http://jokul-retention-dev.103.10.130.53.xip.io/retention/
 ``` shell
 
 curl  -X POST "http://jokul-retention-dev.103.10.130.53.xip.io/retention/
-               user/v1/userconfig"
+               user/v1/user-config"
       -H "accept: */*"
       -H "Content-Type: application/json"
       -d "{ "key": \"string\",
@@ -672,7 +705,7 @@ curl  -X POST "http://jokul-retention-dev.103.10.130.53.xip.io/retention/
 ```
 
 ### HTTP Request 
-`***POST*** /userconfig` 
+`***POST*** /user-config` 
 
 **Parameters**
 
